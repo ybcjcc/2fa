@@ -11,6 +11,13 @@
 
 ## 安装
 
+### 方式 1：下载预编译包（推荐）
+直接从 [Releases](https://github.com/ybcjcc/2fa/releases) 页面下载对应系统的二进制文件。
+- **Windows**: 下载 `2fa-windows-amd64.zip`
+- **macOS**: 下载 `2fa-darwin-amd64.tar.gz` (Intel) 或 `2fa-darwin-arm64.tar.gz` (Apple Silicon)
+- **Linux**: 下载 `2fa-linux-amd64.tar.gz` 或 `2fa-linux-arm64.tar.gz`
+
+### 方式 2：Go Install 安装
 ```bash
 go install github.com/ybcjcc/2fa@latest
 ```

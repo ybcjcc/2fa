@@ -11,6 +11,13 @@
 
 ## Installation
 
+### Option 1: Pre-built Binaries (Recommended)
+Download the latest binary for your system from the [Releases](https://github.com/ybcjcc/2fa/releases) page.
+- **Windows**: Download `2fa-windows-amd64.zip`
+- **macOS**: Download `2fa-darwin-amd64.tar.gz` (Intel) or `2fa-darwin-arm64.tar.gz` (Apple Silicon)
+- **Linux**: Download `2fa-linux-amd64.tar.gz` or `2fa-linux-arm64.tar.gz`
+
+### Option 2: Go Install
 ```bash
 go install github.com/ybcjcc/2fa@latest
 ```
