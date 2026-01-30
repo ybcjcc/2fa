@@ -24,11 +24,11 @@ jobs:
           go-version: 1.23 # 或者指定版本，例如 '1.21'
 
       - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v5
+        uses: goreleaser/goreleaser-action@v6
         with:
           # 'latest', 'nightly', or a specific version
           distribution: goreleaser
-          version: latest
+          version: "~> v2"
           args: release --clean
         env:
           # GITHUB_TOKEN 是 GitHub 自动生成的，无需你自己设置 Secrets
