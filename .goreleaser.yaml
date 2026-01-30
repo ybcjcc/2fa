@@ -1,0 +1,55 @@
+# .goreleaser.yaml
+version: 2
+
+before:
+  hooks:
+    # 确保在构建前 tidy 你的 mod
+    - go mod tidy
+
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+      - darwin # macOS
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w
+    # 如果你的入口文件不在根目录，用 main: ./cmd/app 指定
+    # main: . 
+
+archives:
+  - format: tar.gz
+    # Windows 使用 zip 格式
+    format_overrides:
+      - goos: windows
+        format: zip
+    # 压缩包名称模板
+    name_template: >-
+      {{ .ProjectName }}_{{ .Version }}_
+      {{- .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
+      {{- else }}{{ .Arch }}{{ end }}
+      {{- if .Arm }}v{{ .Arm }}{{ end }}
+    # 包含文档文件
+    files:
+      - README.md
+      - README_zh.md
+      - LICENSE
+
+checksum:
+  name_template: 'checksums.txt'
+
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
